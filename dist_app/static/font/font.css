@@ -1,0 +1,24 @@
+@font-face {
+    font-family: MFYueHei;
+    src: url('MFYueHei_Noncommercial-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: simhei;
+    src: url('simhei.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Microsoft;
+    src: url('MicrosoftYaHeiUI-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: MFShangHei;
+    src: url('MFShangHei_Noncommercial-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }

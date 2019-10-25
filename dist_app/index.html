@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>laboratory_app</title><link href=./static/css/app.ca81d75f8985801daebe1b808cd7c913.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=./static/js/manifest.cf7fff1effd3f261cbc8.js></script><script type=text/javascript src=./static/js/vendor.6765f4ed897c8f46c5ea.js></script><script type=text/javascript src=./static/js/app.5822d96f741cb4b6916b.js></script></body></html><script type=text/javascript>(function(doc, win) {
+           var docEl = doc.documentElement,
+           isIOS = navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+           dpr = isIOS ? Math.min(win.devicePixelRatio, 3) : 1,
+           dpr = window.top === window.self ? dpr : 1, //被iframe引用时，禁止缩放
+           dpr = 1,
+           scale = 1 / dpr,
+           resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+         docEl.dataset.dpr = dpr; 
+         var metaEl = doc.createElement('meta');
+         metaEl.name = 'viewport';
+         metaEl.content = 'initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale;
+         docEl.firstElementChild.appendChild(metaEl);
+ 
+         var recalc = function() {
+             let clientHeight = docEl.clientHeight;
+             let clientWidth = docEl.clientWidth;
+               // doc.getElementsByTagName("html")[0].style.fontSize = 16*clientWidth*6.25/1334 +'px';
+               clientWidth = 1334 * dpr;
+             docEl.style.fontSize = 52 * (clientWidth / 1334) + 'px';
+         };
+         recalc()
+         if (!doc.addEventListener) return;
+         win.addEventListener(resizeEvt, recalc, false);
+         doc.addEventListener('DOMContentLoaded', recalc, false);
+ 
+   })(document, window);</script>

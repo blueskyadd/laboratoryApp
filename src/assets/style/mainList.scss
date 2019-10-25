@@ -1,0 +1,377 @@
+
+     .personnelManagement_list{
+         height: 100%;
+         overflow-y: scroll;
+        li,.vux-swipeout-item{
+            height: 1.46rem;
+            background: #fff;
+            display: flex;
+            font-weight:400;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 .3rem .1rem;
+            margin-bottom: .1rem;
+            .firstChild{
+                font-family:simhei;
+                font-size: .36rem;
+                color:rgba(8,167,149,1);
+                line-height: .36rem;
+                margin-bottom: .16rem;
+                width: 100%;
+                .projectNumber{
+                    max-width: 95%;
+                    display: block;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    text-align: left;
+                }
+                .rightStatus{
+                    max-width: 78%;
+                }
+                //右边状态
+                .ststusText{
+                    font-size: .24rem;
+                    display: flex;
+                    align-items: center;
+                    i{
+                        display: block;
+                        width: .1rem;
+                        height: .1rem;
+                        
+                        border-radius: 50%;
+                        margin-right: .13rem;
+                    }
+                }
+                .underline{
+                        font-size: .22rem;
+                        font-family:simhei;
+                        font-weight:400;
+                        text-decoration:underline;
+                        color:rgba(8,167,149,1);
+                        margin-left: .13rem;
+                }
+                .normal{
+                        color:rgba(8,167,149,1)!important;
+                        i{
+                            background: #08A795;
+                        }
+                }
+                .maintain{
+                    color: #F21338!important;
+                    i{
+                            background: #F21338;
+                        }
+                }
+                .number{
+                    color: #F21338;
+                    max-width: 20%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    display: block;
+                }
+                .editBox{
+                    display: flex;
+                    width: 1.59rem;
+                    justify-content: space-between;
+                    .edit{
+                        margin-right: 0;
+                    }
+                }
+                .delete, .edit{
+                    text-decoration:underline;
+                    color: #F21338;
+                }
+                .edit{
+                    color: #08A795;
+                    margin-right: .5rem;
+                }
+                .idle{
+                    color: #e1e64a;
+                    i{
+                        background: #e1e64a;
+                    }
+                }
+            }
+            .ststusTextTrue{
+                display: flex;
+            width: 100%;
+            justify-content: space-between;
+            }
+            .materialSafety{
+                justify-content: space-between;
+                .safety{
+                    font-size: .22rem!important;
+                    font-family:simhei;
+                    font-weight:400;
+                    color:rgba(102,102,102,1)!important;
+                }
+            }
+            .twoChild{
+                font-family:simhei;
+                font-size: .24rem;
+                color:rgba(51,51,51,1);
+                display: flex;
+                align-items: center;
+                width: 100%;
+                .underline{
+                    text-decoration:underline;
+                    color:rgba(8,167,149,1);
+                }
+                .MalfunctionInfo{
+                    display: flex;
+                    align-items: center;
+                    p{
+                        color: #F21338;
+                    }
+                }
+                .watchInfo{P{
+                    color: #08A795;
+                }}
+                i{
+                    width: .1rem;
+                    height: .1rem;
+                    display: block;
+                    border-radius: 50%;
+                    background: #999999;
+                    margin-right: .06rem;
+                }
+                span{
+                    img{
+                        width: .27rem;
+                        height: .24rem;
+                        margin-left: .4rem;
+                        margin-right: .09rem;
+                    }
+                }
+                span:last-child{
+                    
+                    font-size: .24rem;
+                    color:rgba(153,153,153,1);
+                    max-width: 7rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    text-align: left;
+                    flex: 1;
+                }
+                .unit{
+                    width: 2rem;
+                }
+                .unitPrice{
+                    width: 5rem;
+                }
+                .unitPrice,.unit{
+                    color:rgba(51,51,51,1)!important;
+                    display: block;
+                    text-align: left;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                .name{
+                    img{
+                        width: .22rem;
+                        height: .18rem;
+                    }
+                    p{
+                        width: 1.24rem;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        text-align: left;
+                    }
+                     .nameLoad{
+                        width: auto;
+                        max-width: 4rem;
+                        margin-right: .2rem;
+                    }
+                }
+            }
+            .equilpmentName{
+                margin-bottom: .16rem;
+                width: 100%;
+                align-items: flex-end;
+                span{
+                    font-size: .26rem!important;
+                    color: #333!important;
+                    display: block;
+                    max-width: 7rem;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                .projectName,i{
+                    max-width: 4rem;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                .lookfile{
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: .56rem;
+                    i{
+                        margin-left: .56rem;
+                        width: auto;
+                        height: auto;
+                        background: transparent;
+                        border-radius: 0%;
+                        color: #08A795;
+                    }
+                }
+                .right_natrue{
+                    color: #999999!important;
+                    font-size: .24rem!important;
+                    display: flex;
+                    align-items: center;
+                    margin-left: .19rem;
+                    i{
+                        width: auto;
+                        height: auto;
+                        background: transparent;
+                        border-radius: 0%;
+                        color: #08A795;
+                    }
+                }
+            }
+            .Time{
+                align-items: center;
+                margin-top: .16rem;
+                justify-content: flex-start!important;
+                margin-bottom: .16rem;
+                i{
+                    width: .1rem;
+                    height: .1rem;
+                    display: block;
+                    border-radius: 50%;
+                    background: #999999;
+                    margin-right: .06rem;
+                }
+                
+                .time_end{
+                    margin-right: 20%;
+                    display: flex;
+                    font-size: .24rem;
+                    max-width: 2rem;
+                    p{
+                        max-width: 2.5rem;
+                        overflow: hidden;
+                        display: block;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        flex: 1;
+                    }
+                    .overTime{
+                        width: 3rem;
+                        max-width: inherit;
+                        text-align: left;
+                    }
+                }
+                .time_overTime{
+                    max-width: inherit;
+                    margin-right: 10%;
+                }
+            }
+            .thereChild{
+                font-size: .24rem;
+                color: #999999;
+                font-family: simhei;
+                display: flex;
+                justify-content: flex-end;
+                width: 100%;
+                span{
+                    display: flex;
+                    align-items: center;
+                    img{
+                        margin-right: .1rem;
+                    }
+                }
+                .projectName,i{
+                    max-width: 4rem;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                .projectName{
+                    margin-right: 0!important;
+                }
+
+                .right_natrue{
+                    color: #999999!important;
+                    font-size: .22rem!important;
+                    display: flex;
+                    align-items: center;
+                    margin-left: .52rem;
+                    i{
+                        width: auto;
+                        height: auto;
+                        background: transparent;
+                        border-radius: 0%;
+                        color: #08A795;
+                    }
+                }
+                .materialId{P{
+                    width: 2.13rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    text-align: left;
+                }}
+                .name{
+                    img{
+                        width: .22rem;
+                        height: .18rem;
+                    }
+                    p{
+                        width: 1.24rem;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        text-align: left;
+                    }
+                    .nameLoad{
+                        width: auto;
+                        max-width: 4rem;
+                        margin-right: .2rem;
+                    }
+                }
+                .explain{
+                    img{
+                        width: .18rem;
+                        height: .18rem;
+                    }
+                    p{
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        text-align: left;
+                    }
+                }
+                .location{
+                    img{
+                        width: .17rem;
+                        height: .21rem;
+                    }
+                    p{
+                        max-width: 2rem;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                }
+                .scan{
+                    width: .37rem;
+                    height: .32rem;
+                }
+            }
+        }
+        li:last-child{
+            background: none!important;
+            height: auto!important;
+            margin: 0!important;
+            padding: 0!important;
+        }
+    }
