@@ -70,9 +70,14 @@ export default {
         plus.key.addEventListener("backbutton", () => {
             if (
               this.$route.name == "LabManagerIndex" ||
-              this.$route.name == "LogingIndex"||
+              this.$route.name == "ProjectManagerIndex"||
+              this.$route.name == "logingindex"||
+              this.$route.name == "TestManagerIndex"||
+              this.$route.name == "ProjectManageIndex"||
+              this.$route.name == "TestengineerIndex"||
               this.$route.name == "gaugerIndex"||
-              this.$route.name == "EquipmentengineerIndex"
+              this.$route.name == "EquipmentengineerIndex"||
+              this.$route.name == "materialEngineerIndex"
             ) {
               if (!first) {
                 first = new Date().getTime(); //记录第一次按下回退键的时间

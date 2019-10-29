@@ -33,27 +33,9 @@ export default {
                 right: 'hide, custom',
                 },
             },
-            events: [{
-                id:1,
-                title:'出差',
-                start:'2019-08-27',
-                end:'2019-08-29',
-                color:'#21a7b0'
-            }, {
-                id:2,
-                title:'春游',
-                start:'2019-08-12',
-                color:'#5621af'
-            },
-            {
-                id:1,
-                title:'出差',
-                start:'2019-08-01',
-                end:'2019-08-03',
-                color:'#21a7b0'
-            }],
-            fileItem:[{name:'项目一',id:1},{name:'项目二',id:2},{name:'项目三',id:3}],
-            fileItemIndex: {name:'项目一',id:1},
+            events: [],
+            fileItem:[],
+            fileItemIndex: {},
             value1:[],
             showAddress: false,
             popupList:[],

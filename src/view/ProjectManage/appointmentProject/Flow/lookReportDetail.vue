@@ -31,9 +31,6 @@ export default {
         this.getProjectManage_historyDetail()
     },
     methods:{
-        goLookPrijectFile(){
-            this.$router.push({name:'LookProjectFile'})
-        },
         getProjectManage_historyDetail(){
             this.$vux.loading.show();
             this.$http.get(this.$conf.env.getProjectManage_historyDetail + this.$route.query.projectID + '/').then(res =>{

@@ -16,10 +16,8 @@
     </div>
 </template>
 <script>
-import { setTimeout } from 'timers';
-import filterData from '../../components/commentMethods/VerificationData'
 export default {
-    name: 'LogingIndex',
+    name: 'logingindex',
     data(){
         return{
             userName:'17630718222',
@@ -179,13 +177,13 @@ body {
         }
     }
     .register_from{
-        width: 100%;
-        // height: ;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        // width: 100%;
+        // // height: ;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
         .register,.userName,.password{
-            width: 88%;
+            width: 100%;
             height: 1rem;
             border-radius: .5rem;
             background: rgba(255,255,255,0.4);
@@ -206,7 +204,7 @@ body {
             }
             input{
                 width: calc(100% - .4rem);
-                height: 80%;
+                height: 90%;
                 font-size: .3rem;
                 padding-left: .24rem;
             }

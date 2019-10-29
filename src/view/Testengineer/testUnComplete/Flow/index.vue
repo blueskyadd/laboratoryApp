@@ -9,7 +9,7 @@
                 <li class="show_box EnvironmentSetup" @click="goEnvironmentSetup()"><img src="../../../../assets/img/Testengineer/Flow/EnvironmentSetup.png" alt=""><span>试验环境搭建</span></li>
                 <li class="show_box contract" @click="goStaffing()"><img src="../../../../assets/img/Testengineer/Flow/staffing.png" alt=""><span>试验员安排</span></li>
                 <!-- <li class="show_box schedule" @click="goScheduleMeasuring()"><img src="../../../../assets/img/Testengineer/Flow/projectData.png" alt=""><span>上传项目数据</span></li> -->
-                <li class="show_box lookReport" @click="goReportMeasuring()"><span :style="{color:equipmentDetailData.result == '不合格'?'#f10000':''}">{{equipmentDetailData.result}}</span><span>试验结果分析</span> </li>
+                <li class="show_box lookReport" @click="equipmentDetailData.result&&goReportMeasuring()"><span :style="{color:equipmentDetailData.result == '不合格'?'#f10000':''}">{{equipmentDetailData.result || '暂无'}}</span><span>试验结果分析</span> </li>
             </ul>
         </div>
     </div>
@@ -34,7 +34,7 @@ export default {
             this.$router.push({name:'Staffing', query:{projectID : this.$route.query.projectID}});
         },
         goReportMeasuring(){
-            this.$router.push({name:'reportMeasuring'});
+            this.$router.push({name:'reportMeasuring', query:{projectID : this.$route.query.projectID}});
         },
         getTestengineer__myexperimentFlow(){
             this.$vux.loading.show();

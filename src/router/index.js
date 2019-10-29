@@ -8,7 +8,7 @@ const router =  new Router({
     /**@nameapp登录 */
     {
       path: '/',
-      name: 'LogingIndex',
+      name: 'logingindex',
       component: ()=> import('@/view/Loging/index')
     },
     /**@name设置退出 */
@@ -472,12 +472,6 @@ const router =  new Router({
       path: '/Equipmentengineer/EstablishProject',
       name: 'EstablishProject',
       component: ()=> import('@/view/ProjectManage/establishProject/establishProject')
-    },
-    /**@name查看项目文件 */
-    {
-      path: '/LookProjectFile',
-      name: 'LookProjectFile',
-      component: ()=> import('@/components/lookProjectFile')
     },
     /**@name物料工程师 */
     {

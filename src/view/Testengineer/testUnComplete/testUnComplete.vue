@@ -13,7 +13,7 @@
                                 <div class="firstChild ststusTextTrue">
                                     <span  class="projectNumber">{{myexperimentList.experiment_num}}</span>
                                 </div>
-                                <div class="twoChild equilpmentName"><span class="projectName">项目名称：{{myexperimentList.name}}</span><span class="right_natrue "><a :href="myexperimentList.method" download="试验方法" class="underline">试验方法</a></span></div>
+                                <div class="twoChild equilpmentName"><span class="projectName">项目名称：{{myexperimentList.name}}</span><span class="right_natrue "><a @click.stop="download(myexperimentList.method)" :href="myexperimentListMethod" download="试验方法" class="underline">试验方法</a></span></div>
                                 <div class="twoChild"><i></i><span>试验开始时间：{{myexperimentList.start_time}}</span></div>
                                 <div class="twoChild"><i></i><span>试验结束时间：{{myexperimentList.start_time}}</span></div>
                                 <div  class="Time thereChild" ><i></i><span class="time_end">试验周期：{{myexperimentList.cycle}}</span><span class="right_natrue">试验类型：<i>{{myexperimentList.type_}}</i></span><span class="right_natrue">值守：<i>{{myexperimentList.onduty}}</i></span></div>
@@ -59,6 +59,7 @@ export default {
             Testengineer__myprojectList:[],
             islistDataIndex: false,
             searchTextIndex: '',
+            myexperimentListMethod:''
         }
     },
     mounted(){
@@ -67,6 +68,9 @@ export default {
         this.getTestengineer__myprojectList(1,'',12);
     },
     methods:{
+        download(file){
+            this.myexperimentListMethod = file;
+        },
         goTestUnCompleteDeatil(data){
             this.$router.push({name:'TestUnCompleteDeatil',query:{projectID:data.id}})
         },

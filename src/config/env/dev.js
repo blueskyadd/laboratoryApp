@@ -117,6 +117,7 @@ module.exports = {
     getTestengineer_testuserList: winchaingroupApi + 'users/app1/testuser/',//试验员列表(522)
     deleteTestengineer_testers: winchaingroupApi + 'ex/app1/testers/',//试验实验员删除(524)
     createdTestengineer_testers: winchaingroupApi + 'ex/app1/testers/',// 试验员安排(523)
+    deletePm_project_setting_flow: winchaingroupApi + 'ex/app1/testers/',//试验员删除
     getTestengineer_alarmList: winchaingroupApi + 'eq/app1/alarm/',//新增报警列表(503)
     searchTestengineer_searcheqList: winchaingroupApi + 'eq/app1/searcheq/?search=',//新增报警设备搜索(501)
     createdTestengineer_alarm: winchaingroupApi + 'eq/app1/alarm/',//新增报警 创建 (502)

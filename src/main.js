@@ -47,40 +47,40 @@ if (process.env.NODE_ENV === 'production') {
 
 
 // if(!window.plus){
-  // Vue.prototype.$StatusbarHeight = 20;
-  // new Vue({
-  //   el: '#app',
-  //   router,
-  //   store,
-  //   render: h => h(App)
-  // })
+  Vue.prototype.$StatusbarHeight = 20;
+  new Vue({
+    el: '#app',
+    router,
+    store,
+    render: h => h(App)
+  })
 // }else{
-  setTimeout(()=>{
-    if(window.plus){
-      var isImmersedStatusbar = plus.navigator.isImmersedStatusbar();
-      if (isImmersedStatusbar) {
-          var StatusbarHeight = plus.navigator.getStatusbarHeight();
-          if (plus.device.model.toString() == 'iPhoneX') {
-              Vue.prototype.$StatusbarHeight = StatusbarHeight + 15;
-          } else {
-              if (plus.os.version < 11) {
-                  FastClick.attach(document.body)
-              }
-              Vue.prototype.$StatusbarHeight = StatusbarHeight;
-          }
-      }
-      plus.navigator.setStatusBarStyle('dark');
-      plus.webview.currentWebview().setStyle({
-        softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
-      });
-      new Vue({
-        el: '#app',
-        router,
-        store,
-        render: h => h(App)
-      })
-    }
-  },1000)
+  // setTimeout(()=>{
+  //   if(window.plus){
+  //     var isImmersedStatusbar = plus.navigator.isImmersedStatusbar();
+  //     if (isImmersedStatusbar) {
+  //         var StatusbarHeight = plus.navigator.getStatusbarHeight();
+  //         if (plus.device.model.toString() == 'iPhoneX') {
+  //             Vue.prototype.$StatusbarHeight = StatusbarHeight + 15;
+  //         } else {
+  //             // if (plus.os.version < 11) {
+  //             //     FastClick.attach(document.body)
+  //             // }
+  //             Vue.prototype.$StatusbarHeight = StatusbarHeight;
+  //         }
+  //     }
+  //     plus.navigator.setStatusBarStyle('dark');
+  //     plus.webview.currentWebview().setStyle({
+  //       softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+  //     });
+  //     new Vue({
+  //       el: '#app',
+  //       router,
+  //       store,
+  //       render: h => h(App)
+  //     })
+  //   }
+  // },1000)
 // }
 /* eslint-disable no-new */ 
 

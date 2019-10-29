@@ -41,13 +41,14 @@
                 </swipeout-item>
             </swipeout>
         </div>
-        <x-button type="primary" @click.native="createdTestengineer_testers()">创建</x-button>
+        <x-button type="primary" @click.native="VerificationData()">创建</x-button>
     </div>
 </template>
 <script>
 import popupPickerlist from '../../../../components/PopupPicker';
 import {  Datetime,  Group, XButton, PopupPicker ,Swipeout, SwipeoutItem,SwipeoutButton } from "vux";
 import { debuglog } from 'util';
+import indexVue from '../../../loging/index.vue';
 export default {
     name:'Staffing',
     components: {Datetime, Group, XButton, PopupPicker ,popupPickerlist, Swipeout, SwipeoutItem, SwipeoutButton},
@@ -58,9 +59,11 @@ export default {
             popupListValue: [],
             popupList: [[],['是','否']],
             StaffingData:[],
+            overStaffingData:[],
             popupListID:[],
             Testengineer_testersDetail:{},
             isStaffingData: false,
+            isPushUser: 0,
         }
     },
     mounted(){
@@ -74,17 +77,19 @@ export default {
         },
         deleteStaffing(item, index){
             if(item.id){
-                this.deleteTestengineer_testers(item);
+                this.deleteTestengineer_testers(item, index);
             }else{
                 this.StaffingData.splice(index, 1);
-                this.$vux.toast.text('删除成功');  
+                this.$vux.toast.text('删除成功'); 
             }
         },
-        deleteTestengineer_testers(item){
+        deleteTestengineer_testers(item,index){
             this.$http.delete(this.$conf.env.deletePm_project_setting_flow + item.id +'/').then( res =>{
                 if(res.status == '204'){
                     this.$vux.toast.text('删除成功');     
-                    this.StaffingData.splice(index,1)
+                    this.StaffingData.splice(index,1);
+                    this.overStaffingData.splice(index,1);
+                     this.isStaffingData = this.StaffingData.length == 0 ? true:false;
                 }else{
                     this.$vux.toast.text('删除失败');             
                 }
@@ -93,27 +98,27 @@ export default {
             })
         },
         addPopupStaffing(data){
+            console.log(this.popupListValue)
             if(data){
                 var Obj ={
                     tester:this.popupListValue[0],
                     on_duty:this.popupListValue[1]
                 }
                 if(this.StaffingData.length>0){
-                /**@name 多选 */
-                //     for(var index =0;index<this.StaffingData.length;index++){
-                //         if(this.StaffingData[index].tester == this.popupListValue[0]){
-                //             this.StaffingData[index].on_duty = this.popupListValue[1]
-                //             return false
-                //         }
-                //     }
-                /**@name 单选 */
-                console.log(this.StaffingData[0])
-                if(this.isStaffingData){
-                    this.StaffingData[0] = Obj;
-                    this.$set(this.StaffingData, 0, this.StaffingData[0]);
-                }else{
-                    this.$vux.toast.text('您已经安排试验员'); 
-                }
+                    console.log(this.StaffingData)
+                    if(this.isStaffingData){
+                        this.StaffingData[0] = Obj;
+                        this.$set(this.StaffingData, 0, this.StaffingData[0]);
+                    }else{
+                        console.log()
+                        this.isPushUser += 1;
+                        if(this.isPushUser == 1){
+                            this.StaffingData.push(Obj);
+                        }else{
+                            this.StaffingData[this.StaffingData.length - 1] = Obj;
+                            this.$set(this.StaffingData, this.StaffingData.length - 1, this.StaffingData[this.StaffingData.length - 1]);
+                        }
+                    }
                 }else{
                     this.StaffingData.unshift(Obj)
                 }
@@ -139,6 +144,7 @@ export default {
             this.$vux.loading.show();
             this.$http.get(this.$conf.env.getTestengineer_testersDetail + this.$route.query.projectID + '/').then(res =>{
                 this.Testengineer_testersDetail = res.data;
+                this.overStaffingData =JSON.parse(JSON.stringify(res.data.testeres));
                 this.StaffingData = res.data.testeres;
                 this.isStaffingData = res.data.testeres.length == 0 ? true:false;
                 this.$vux.loading.hide();
@@ -148,42 +154,75 @@ export default {
                 this.$vux.toast.text(err.response?err.response.data:'服务器错误', 'top');
             }) 
         },
-        createdTestengineer_testers(){
-            if( this.StaffingData.length == 0){
+        VerificationData(){
+            if( this.StaffingData.length == 0 || this.StaffingData.length == this.overStaffingData.length){
                 this.$vux.toast.text('请先选择试验员', 'top');
             }else{
-                if(!this.isStaffingData){
-                    this.$vux.toast.text('您已经安排试验员'); 
-                }else{
-                    this.$vux.loading.show();
-                    var experimentDetail = {
-                        "experiment":this.$route.query.projectID,
-                        "tester": '',
-                        "on_duty":this.StaffingData[0].on_duty == '是'?true:false
+                 if(this.StaffingData.length == 1){
+                     this.$vux.loading.show();
+                     this.createdTestengineer_testers()
+                 }else{
+                     if(this.isPushUser == 0){
+                        this.$vux.toast.text('请先选择试验员'); 
+                    }else{
+                        console.log(this.isRepeat(this.StaffingData,'tester'))
+                        this.isRepeat(this.StaffingData,'tester')?this.createdTestengineer_testers(): this.$vux.toast.text('该试验员已在，请选择其他试验员'); 
+                        
                     }
-                    if(this.popupList[0].length){
-                        this.popupList[0].forEach((Element, index) =>{
-                            if(Element == this.StaffingData[0].tester){
-                                experimentDetail.tester = this.popupListID[index]
-                            }
-                        })
-                    }
-                    this.$http.post(this.$conf.env.createdTestengineer_testers,experimentDetail).then(res =>{
-                        if(res.status == '201'){
-                            this.$vux.toast.text('提交成功'); 
-                            setTimeout(()=>{
-                                this.$router.back();
-                            },100)
-                        }else{
-                            this.$vux.toast.text('提交失败');            
-                        }
-                        this.$vux.loading.hide();
-                    }).catch(err =>{
-                        this.$vux.loading.hide();
-                        this.$vux.toast.text(err.response?err.response.data:'服务器错误', 'top');
-                    }) 
-                }
+                 }
             }
+        },
+        isRepeat(arr) {
+           let len = arr.length;
+            for (let i = 0; i < len; i++) {
+                for (let j = i + 1; j < len; j++) {
+                    if (arr[i].tester == arr[j].tester) {
+                        return false
+                        len--;
+                        j--;
+                    }
+                }   
+            }
+            return true;
+        },
+        createdTestengineer_testers(){
+            console.log(this.popupListID)
+            var experimentDetail = {
+                "experiment":this.$route.query.projectID*1,
+                "tester": '',
+                "on_duty":this.StaffingData[this.StaffingData.length - 1].on_duty == '是'?true:false
+            }
+            console.log(this.StaffingData,this.popupList[0])
+            if(this.popupList[0].length){
+                this.popupList[0].forEach((Element, index) =>{
+                    this.StaffingData.forEach((value,indexVue) =>{
+                        if(Element == value.tester){
+                            experimentDetail.tester =(this.overStaffingData.length == 1? this.popupListID[indexVue]:this.overStaffingData.length == 0) ?this.popupListID[index]: this.popupListID[this.StaffingData.length-1]
+                        }
+                    })
+                })
+            }
+
+            console.log(experimentDetail.tester)
+            this.$http.post(this.$conf.env.createdTestengineer_testers,experimentDetail).then(res =>{
+                if(res.status == '201'){
+                    this.$vux.toast.text('提交成功'); 
+                    setTimeout(()=>{
+                        this.$router.back();
+                    },100)
+                }else{
+                    this.$vux.toast.text('提交失败');            
+                }
+                this.$vux.loading.hide();
+            }).catch(err =>{
+                this.$vux.loading.hide();
+                this.$vux.toast.text(err.response?err.response.data:'服务器错误', 'top');
+            }) 
+        }
+    },
+    watch:{
+        popupListID(){
+            console.log(this.popupListID)
         }
     }
 }
@@ -252,6 +291,7 @@ export default {
                         justify-content: space-between;
                         width: 100%;
                         align-items: center;
+                        padding:0!important;
                     }
                 }
                 

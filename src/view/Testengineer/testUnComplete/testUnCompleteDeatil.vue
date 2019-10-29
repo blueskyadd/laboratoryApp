@@ -2,11 +2,11 @@
     <div class="TestUnCompleteDeatil body_main">
         <main-list :islistData='islistData'  ref="mainList">
             <template>
-                <li @click="LookReportDetailDetail()"  v-for="item in equipmentDetailData.experiments" :key="item.id">
+                <li v-for="item in equipmentDetailData.experiments" :key="item.id">
                     <div class="firstChild ststusTextTrue">
                         <span style="display: flex;width:80%">
                             <span  class="projectNumber rightStatus" style="max-width:80%">{{item.experiment_num}}</span>
-                            <span class="underline">实验数据</span>  
+                            <span class="underline">试验数据</span>  
                         </span>
                         <span class="normal ststusText" v-if="item.result == '合格'"><i></i>合格</span>
                         <span class="maintain ststusText" v-else><i></i>{{item.result}}</span>
@@ -21,7 +21,7 @@
 </template>
 <script>
 import Search from '../../../components/search'; 
-import mainList from '../../../components/mainList'
+import mainList from '../../../components/mainList';
 export default {
     name:'TestUnCompleteDeatil',
     components:{Search, mainList},
@@ -35,12 +35,6 @@ export default {
         this.getTestengineer__myprojectDetail()
     },
     methods:{
-        LookReportDetailDetail(){
-            this.$router.push({name:'measureFlow'})
-        },
-        goLookPrijectFile(){
-            this.$router.push({name:'LookProjectFile'})
-        },
         getTestengineer__myprojectDetail(){
             this.$vux.loading.show();
             this.$http.get(this.$conf.env.getTestengineer__myprojectDetail + this.$route.query.projectID + '/').then(res =>{

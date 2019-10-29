@@ -43,7 +43,7 @@ export default {
             localStorage.removeItem('jp_token');//存入token值
             localStorage.removeItem('userName');//存放用户名
             localStorage.removeItem('userIdentity');//存放用户身份
-            this.$router.replace({name:'LogingIndex'});
+            this.$router.replace({name:'logingindex'});
         },
         setSystem_userinfo(){
             this.$vux.loading.show();
